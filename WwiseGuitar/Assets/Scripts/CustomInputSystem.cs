@@ -10,10 +10,14 @@ public class CustomInputSystem : MonoBehaviour
     private Controls controls;
 
     private Vector2 zInput;
-    private Vector2 zRInput;
-    private Vector2 currentZRInput;
-    private bool isZRPressed;
-    
+    private bool isZPressed;
+    public bool IsZPressed => isZPressed;    
+    private Vector2 rZInput;
+    private bool isRZPressed;
+    public bool IsRZPressed => isRZPressed;    
+    public delegate void OnButtonStatusChangedDelegate(float value);
+    public static event OnButtonStatusChangedDelegate OnRZPressed;
+    public static event OnButtonStatusChangedDelegate OnZPressed;
     private void Awake()
     {
         if (Instance != null)
@@ -28,15 +32,27 @@ public class CustomInputSystem : MonoBehaviour
         controls.GuitarController.RZ.started += OnRZInput;
         controls.GuitarController.RZ.canceled += OnRZInput;
 
-        Debug.Log("INPUT SYSYEM INIT");
+        controls.GuitarController.Z.performed += OnZInput;
+        controls.GuitarController.Z.started += OnZInput;
+        controls.GuitarController.Z.canceled += OnZInput;
+    }
+
+    private void OnZInput(InputAction.CallbackContext ctx)
+    {
+        zInput = ctx.ReadValue<Vector2>();
+        Debug.Log(zInput);
+        isZPressed = zInput.x != 0 || zInput.y != 0;
+        //TODO: test it's x or y
+        OnZPressed?.Invoke(zInput.y);
     }
 
     private void OnRZInput(InputAction.CallbackContext ctx)
     {
-        zRInput = ctx.ReadValue<Vector2>();
-        currentZRInput = zRInput;
-        Debug.Log(zRInput);
-        isZRPressed = zRInput.x != 0 || zRInput.y != 0;
+        rZInput = ctx.ReadValue<Vector2>();
+        Debug.Log(rZInput);
+        isRZPressed = rZInput.x != 0 || rZInput.y != 0;
+        //TODO: test it's x or y
+        OnRZPressed?.Invoke(rZInput.y);
     }
 
     private void OnEnable() 
@@ -46,9 +62,7 @@ public class CustomInputSystem : MonoBehaviour
 
     private void OnDisable() 
     {
-        if(controls==null){
-            return;
-        }
+        if(controls==null) { return; }
         controls.GuitarController.Disable();
     }
 }
