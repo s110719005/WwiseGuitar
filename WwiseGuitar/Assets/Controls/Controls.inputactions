@@ -1,0 +1,54 @@
+{
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "GuitarController",
+            "id": "5a1d120e-c619-423e-a7b5-b02586ab60f5",
+            "actions": [
+                {
+                    "name": "RZ",
+                    "type": "Value",
+                    "id": "496b0007-1a92-4c8d-820b-e993d96c69f9",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Z",
+                    "type": "Button",
+                    "id": "1a4fe846-560b-46fb-a722-7b480959c7e8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9102c2eb-1b77-40e4-bd3f-8f349b3775e0",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RZ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6900bf1-7fab-4190-9ce5-a6e339a139f4",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Z",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
