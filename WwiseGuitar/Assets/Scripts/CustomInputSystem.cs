@@ -36,17 +36,18 @@ public class CustomInputSystem : MonoBehaviour
         //controls.GuitarController.Z.started += OnZInput;
         //controls.GuitarController.Z.canceled += OnZInput;
 
-        controls.GuitarController.Z.started += ctx => TestStart();
-        controls.GuitarController.Z.canceled += ctx => TestCanceled();
+        controls.GuitarController.Z.started += ctx => TestStart(ctx);
+        controls.GuitarController.Z.canceled += ctx => TestCanceled(ctx);
     }
 
-    private void TestCanceled()
+    private void TestCanceled(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Canceled");
+        Debug.Log("Canceled: " + ctx);
+        
     }
-    private void TestStart()
+    private void TestStart(InputAction.CallbackContext ctx)
     {
-        Debug.Log("start");
+        Debug.Log("start " + ctx);
     }
     private void OnZInput(InputAction.CallbackContext ctx)
     {
