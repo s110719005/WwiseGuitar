@@ -28,15 +28,26 @@ public class CustomInputSystem : MonoBehaviour
 
         controls = new Controls();
 
-        controls.GuitarController.RZ.performed += OnRZInput;
+        //controls.GuitarController.RZ.performed += OnRZInput;
         controls.GuitarController.RZ.started += OnRZInput;
         controls.GuitarController.RZ.canceled += OnRZInput;
 
-        controls.GuitarController.Z.performed += OnZInput;
-        controls.GuitarController.Z.started += OnZInput;
-        controls.GuitarController.Z.canceled += OnZInput;
+        //controls.GuitarController.Z.performed += OnZInput;
+        //controls.GuitarController.Z.started += OnZInput;
+        //controls.GuitarController.Z.canceled += OnZInput;
+
+        controls.GuitarController.Z.started += ctx => TestStart();
+        controls.GuitarController.Z.canceled += ctx => TestCanceled();
     }
 
+    private void TestCanceled()
+    {
+        Debug.Log("Canceled");
+    }
+    private void TestStart()
+    {
+        Debug.Log("start");
+    }
     private void OnZInput(InputAction.CallbackContext ctx)
     {
         zInput = ctx.ReadValue<Vector2>();
@@ -50,6 +61,7 @@ public class CustomInputSystem : MonoBehaviour
     {
         rZInput = ctx.ReadValue<Vector2>();
         Debug.Log(rZInput);
+        Debug.Log(ctx);
         isRZPressed = rZInput.x != 0 || rZInput.y != 0;
         //TODO: test it's x or y
         OnRZPressed?.Invoke(rZInput.y);
