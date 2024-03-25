@@ -28,45 +28,52 @@ public class CustomInputSystem : MonoBehaviour
 
         controls = new Controls();
 
-        //controls.GuitarController.RZ.performed += OnRZInput;
-        controls.GuitarController.RZ.started += OnRZInput;
-        controls.GuitarController.RZ.canceled += OnRZInput;
+        controls.GuitarController.Z.performed += ctx => ZPerformed(ctx);
+        controls.GuitarController.Z.started += ctx => ZStart(ctx);
+        controls.GuitarController.Z.canceled += ctx => ZCanceled(ctx);
 
-        //controls.GuitarController.Z.performed += OnZInput;
-        //controls.GuitarController.Z.started += OnZInput;
-        //controls.GuitarController.Z.canceled += OnZInput;
-
-        controls.GuitarController.Z.started += ctx => TestStart(ctx);
-        controls.GuitarController.Z.canceled += ctx => TestCanceled(ctx);
+        controls.GuitarController.RZ.performed += ctx => RZPerformed(ctx);
+        controls.GuitarController.RZ.started += ctx => RZStart(ctx);
+        controls.GuitarController.RZ.canceled += ctx => RZCanceled(ctx);
     }
 
-    private void TestCanceled(InputAction.CallbackContext ctx)
+    private void ZPerformed(InputAction.CallbackContext ctx)
     {
-        Debug.Log("Canceled: " + ctx);
-        
-    }
-    private void TestStart(InputAction.CallbackContext ctx)
-    {
-        Debug.Log("start " + ctx);
-    }
-    private void OnZInput(InputAction.CallbackContext ctx)
-    {
-        zInput = ctx.ReadValue<Vector2>();
-        Debug.Log(zInput);
-        isZPressed = zInput.x != 0 || zInput.y != 0;
-        //TODO: test it's x or y
-        OnZPressed?.Invoke(zInput.y);
+        float value = ctx.ReadValue<float>();
+        Debug.Log("Performed: " + value);
+        OnZPressed.Invoke(value);
     }
 
-    private void OnRZInput(InputAction.CallbackContext ctx)
+    private void ZCanceled(InputAction.CallbackContext ctx)
     {
-        rZInput = ctx.ReadValue<Vector2>();
-        Debug.Log(rZInput);
-        Debug.Log(ctx);
-        isRZPressed = rZInput.x != 0 || rZInput.y != 0;
-        //TODO: test it's x or y
-        OnRZPressed?.Invoke(rZInput.y);
+        float value = ctx.ReadValue<float>();
+        //Debug.Log("Canceled: " + value);
+        OnZPressed.Invoke(0);
     }
+    private void ZStart(InputAction.CallbackContext ctx)
+    {
+        float value = ctx.ReadValue<float>();
+        //Debug.Log("Start: " + value);
+    }
+    private void RZPerformed(InputAction.CallbackContext ctx)
+    {
+        float value = ctx.ReadValue<float>();
+        Debug.Log("Performed: " + value);
+        OnRZPressed.Invoke(value);
+    }
+
+    private void RZCanceled(InputAction.CallbackContext ctx)
+    {
+        float value = ctx.ReadValue<float>();
+        //Debug.Log("Canceled: " + value);
+        OnRZPressed.Invoke(0);
+    }
+    private void RZStart(InputAction.CallbackContext ctx)
+    {
+        float value = ctx.ReadValue<float>();
+        //Debug.Log("Start: " + value);
+    }
+
 
     private void OnEnable() 
     {

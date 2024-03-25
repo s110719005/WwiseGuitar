@@ -9,5 +9,7 @@ public class ButtonSetData : ScriptableObject
     public string eventName;
     public float ZValue;
     public float RZValue;
+    //or wise id
+    public int eventIndex;
 
 }
