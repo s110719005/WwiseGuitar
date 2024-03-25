@@ -61,6 +61,7 @@ public class TriggerEvent : MonoBehaviour
     
     private void CheckEvent()
     {
+        Debug.Log("CurrentValue: " + guitarValue);
         if(buttonEventDictionary.TryGetValue(guitarValue, out ButtonSetData buttonSetData))
         {
             Debug.Log("Trigger Event: " + buttonSetData.eventName);
