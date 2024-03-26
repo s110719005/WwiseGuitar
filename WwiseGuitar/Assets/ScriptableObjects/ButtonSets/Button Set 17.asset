@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventName: Event 17
   ZValue: -0.9270833
-  RZValue: 0
+  RZValue: -1
   eventIndex: 17
