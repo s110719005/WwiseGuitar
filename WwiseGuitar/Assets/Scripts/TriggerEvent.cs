@@ -17,6 +17,28 @@ public class TriggerEvent : MonoBehaviour
     {
         InitButtonEventDicionary();
     }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            float value = -0.9957108f;
+            value = (int)(Math.Round(value, 3)*1000);
+            ChangedZValue(value);
+        }
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            float value = -0.9859068f;
+            value = (int)(Math.Round(value, 3)*1000);
+            ChangedZValue(value);
+        }
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            float value = -0.9761029f;
+            value = (int)(Math.Round(value, 3)*1000);
+            ChangedZValue(value);
+        }
+    }
     private void OnEnable() 
     {
         CustomInputSystem.OnRZPressed += ChangedRZValue;
@@ -46,8 +68,8 @@ public class TriggerEvent : MonoBehaviour
         foreach (var buttonSet in buttonSets)
         {
             Vector2 vector2 = Vector2.zero;
-            vector2.x = (float)Math.Round(buttonSet.ZValue, 3);
-            vector2.y = (float)Math.Round(buttonSet.RZValue, 3);
+            vector2.x = (int)(Math.Round(buttonSet.ZValue, 3)*1000);
+            vector2.y = (int)(Math.Round(buttonSet.RZValue, 3)*1000);
             //vector2.y = buttonSet.RZValue;
             if(!buttonEventDictionary.ContainsKey(vector2))
             {
@@ -58,10 +80,10 @@ public class TriggerEvent : MonoBehaviour
                 Debug.Log("button key" + buttonSet.eventName + "already exisit!");
             }
         }
-        // for(int i = 0; i < buttonEventDictionary.Count; i++)
-        // {
-        //     Debug.Log(buttonEventDictionary.ElementAt(i).Key.x +", " +  buttonEventDictionary.ElementAt(i).Key.y + " Event: " + buttonEventDictionary.ElementAt(i).Value.eventName);
-        // }
+        for(int i = 0; i < buttonEventDictionary.Count; i++)
+        {
+            Debug.Log(buttonEventDictionary.ElementAt(i).Key.x +", " +  buttonEventDictionary.ElementAt(i).Key.y + " Event: " + buttonEventDictionary.ElementAt(i).Value.eventName);
+        }
     }
 
     

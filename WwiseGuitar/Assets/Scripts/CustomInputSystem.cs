@@ -40,7 +40,7 @@ public class CustomInputSystem : MonoBehaviour
     private void ZPerformed(InputAction.CallbackContext ctx)
     {
         float value = ctx.ReadValue<float>();
-        value = (float)Math.Round(value, 3);
+        value = (int)(Math.Round(value, 3)*1000);
         Debug.Log("Performed: " + value);
         OnZPressed.Invoke(value);
     }
@@ -59,7 +59,7 @@ public class CustomInputSystem : MonoBehaviour
     private void RZPerformed(InputAction.CallbackContext ctx)
     {
         float value = ctx.ReadValue<float>();
-        value = (float)Math.Round(value, 3);
+        value = (int)(Math.Round(value, 3)*1000);
         Debug.Log("Performed: " + value);
         OnRZPressed.Invoke(value);
     }
