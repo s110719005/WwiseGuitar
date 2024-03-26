@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TriggerEvent : MonoBehaviour
@@ -45,8 +46,9 @@ public class TriggerEvent : MonoBehaviour
         foreach (var buttonSet in buttonSets)
         {
             Vector2 vector2 = Vector2.zero;
-            vector2.x = buttonSet.ZValue;
-            vector2.y = buttonSet.RZValue;
+            vector2.x = (float)Math.Round(buttonSet.ZValue, 3);
+            vector2.y = (float)Math.Round(buttonSet.RZValue, 3);
+            //vector2.y = buttonSet.RZValue;
             if(!buttonEventDictionary.ContainsKey(vector2))
             {
                 buttonEventDictionary.Add(vector2, buttonSet);
@@ -56,12 +58,16 @@ public class TriggerEvent : MonoBehaviour
                 Debug.Log("button key" + buttonSet.eventName + "already exisit!");
             }
         }
+        // for(int i = 0; i < buttonEventDictionary.Count; i++)
+        // {
+        //     Debug.Log(buttonEventDictionary.ElementAt(i).Key.x +", " +  buttonEventDictionary.ElementAt(i).Key.y + " Event: " + buttonEventDictionary.ElementAt(i).Value.eventName);
+        // }
     }
 
     
     private void CheckEvent()
     {
-        Debug.Log("CurrentValue: " + guitarValue);
+        Debug.Log("CurrentValue: " + guitarValue.x + ", " + guitarValue.y);
         if(buttonEventDictionary.TryGetValue(guitarValue, out ButtonSetData buttonSetData))
         {
             Debug.Log("Trigger Event: " + buttonSetData.eventName);
