@@ -1,0 +1,12 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1431923080	TestButtonEvent_2			\Default Work Unit\TestButtonEvent_2	
+	1431923081	TestButtonEvent_3			\Default Work Unit\TestButtonEvent_3	
+	1431923083	TestButtonEvent_1			\Default Work Unit\TestButtonEvent_1	
+	1431923086	TestButtonEvent_4			\Default Work Unit\TestButtonEvent_4	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	82673397	TestSound3	C:\01_Personal\Wwise\WwiseGuitar\.cache\Windows\SFX\SFX_Stamina_Stunned_Loopable_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\TestSound3		743716
+	241757419	TestSound4	C:\01_Personal\Wwise\WwiseGuitar\.cache\Windows\SFX\SFX_Stamina_Refill_Loopable_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\TestSound4		238808
+	277930967	TestSound2	C:\01_Personal\Wwise\WwiseGuitar\.cache\Windows\SFX\SFX_Stamina_Full_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\TestSound2		177316
+	636695263	TestSound1	C:\01_Personal\Wwise\WwiseGuitar\.cache\Windows\SFX\SFX_Stamina_Low_Loopable_818F3B66.wem		\Actor-Mixer Hierarchy\Default Work Unit\TestSound1		247168
+

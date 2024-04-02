@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a212bd8ab8cab9e42bc61c35b4dfd595, type: 3}
+  m_Name: 3B0C3D50-04D7-4DB5-AA31-BA20487F82CC
+  m_EditorClassIdentifier: 
+  objectName: TestButtonEvent_1
+  id: 1431923083
+  guid: 3B0C3D50-04D7-4DB5-AA31-BA20487F82CC

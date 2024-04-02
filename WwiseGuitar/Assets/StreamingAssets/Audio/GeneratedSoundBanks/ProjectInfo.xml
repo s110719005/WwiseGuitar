@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo>
+	<Project Name="WwiseGuitar" GUID="{11BE6CE0-6523-4625-AF13-6C55C088293E}" Generator="2023.1.1.8417"/>
+	<CacheRoot>../../../../../../../Wwise/WwiseGuitar/.cache</CacheRoot>
+	<Platforms>
+		<Platform Name="Windows" GUID="{02778B3F-1C6F-43A8-A647-2CBB36526E34}" BasePlatform="Windows" BasePlatformGUID="{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}" Path="Windows"/>
+	</Platforms>
+	<Languages>
+		<Language Name="English(US)" Id="684519430" GUID="{0A940F86-9794-4E75-B837-9AA3B173F10E}" Default="true" UseAsStandIn="true"/>
+	</Languages>
+	<FileHash>{36692704-3CA0-1EF5-08D9-3ED16648D33C}</FileHash>
+</ProjectInfo>
