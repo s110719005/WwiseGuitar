@@ -16,3 +16,7 @@ MonoBehaviour:
   ZValue: -0.9957108
   RZValue: -1
   eventIndex: 10
+  wiseEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: d2dfa6f4495bada4c96dff58e3de6967, type: 2}
