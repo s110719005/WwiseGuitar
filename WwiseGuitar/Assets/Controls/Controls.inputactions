@@ -16,12 +16,12 @@
                 },
                 {
                     "name": "Z",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "1a4fe846-560b-46fb-a722-7b480959c7e8",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -38,8 +38,30 @@
                 },
                 {
                     "name": "",
+                    "id": "c354cc79-aab1-4fc5-883a-ce37c0af7a88",
+                    "path": "<HID::Licensed by Nintendo of America  Harmonix RB3 Mustang Guitar for Nintendo Wii>/rz",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RZ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "d6900bf1-7fab-4190-9ce5-a6e339a139f4",
                     "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Z",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b8a7a4e-ded7-469e-a1e9-c0dc5c566952",
+                    "path": "<HID::Licensed by Nintendo of America  Harmonix RB3 Mustang Guitar for Nintendo Wii>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
