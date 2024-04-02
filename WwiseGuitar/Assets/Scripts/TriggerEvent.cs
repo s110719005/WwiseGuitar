@@ -12,6 +12,9 @@ public class TriggerEvent : MonoBehaviour
     private List<ButtonSetData> buttonSets;
 
     private Dictionary<Vector2, ButtonSetData> buttonEventDictionary;
+    //DEBUG
+    [SerializeField]
+    private ButtonSetData DEBUG_testData;
     
     private void Awake() 
     {
@@ -37,6 +40,10 @@ public class TriggerEvent : MonoBehaviour
             float value = -0.9761029f;
             value = (int)(Math.Round(value, 3)*1000);
             ChangedZValue(value);
+        }
+        if(Input.GetKeyDown(KeyCode.L))
+        {
+            DEBUG_testData.wiseEvent.Post(gameObject);
         }
     }
     private void OnEnable() 
@@ -93,7 +100,10 @@ public class TriggerEvent : MonoBehaviour
         if(buttonEventDictionary.TryGetValue(guitarValue, out ButtonSetData buttonSetData))
         {
             Debug.Log("Trigger Event: " + buttonSetData.eventName);
-            //TriggerEvent(buttonSetData.eventIndex);
+            if(buttonSetData.wiseEvent != null)
+            {
+                buttonSetData.wiseEvent.Post(gameObject);
+            }
         }
     }
 }

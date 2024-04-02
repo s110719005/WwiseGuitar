@@ -11,5 +11,6 @@ public class ButtonSetData : ScriptableObject
     public float RZValue;
     //or wise id
     public int eventIndex;
+    public AK.Wwise.Event wiseEvent;
 
 }
