@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 013ed074262a37c40955b4011f5a58c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputType: 0
 --- !u!114 &905379613519270146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,7 +58,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2af9bbb79cfbb01408992735587f86f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonSets:
+  singleEvent:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 0}
+  multipleEventsButtonSets:
   - {fileID: 11400000, guid: 682d5ca56fbe04f4ea5290573c61ec0e, type: 2}
   - {fileID: 11400000, guid: 770599e26639e764093bfe1c10e0d894, type: 2}
   - {fileID: 11400000, guid: 37b613f4cef98984081c64edd1ce5dcb, type: 2}
