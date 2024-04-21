@@ -8,13 +8,17 @@ public class TriggerEvent : MonoBehaviour
 {
     //x = Z, y = RZ
     private Vector2 guitarValue = Vector2.zero;
+    [Header("Single Event")]
     [SerializeField]
-    private List<ButtonSetData> buttonSets;
+    private AK.Wwise.Event singleEvent;
+    [Header("Multiple Events")]
+    [SerializeField]
+    private List<ButtonSetData> multipleEventsButtonSets;
 
-    private Dictionary<Vector2, ButtonSetData> buttonEventDictionary;
+    private Dictionary<Vector2, ButtonSetData> multipleButtonEventDictionary;
     //DEBUG
-    [SerializeField]
-    private ButtonSetData DEBUG_testData;
+    // [SerializeField]
+    // private ButtonSetData DEBUG_testData;
     
     private void Awake() 
     {
@@ -23,28 +27,28 @@ public class TriggerEvent : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            float value = -0.9957108f;
-            value = (int)(Math.Round(value, 3)*1000);
-            ChangedZValue(value);
-        }
-        if(Input.GetKeyDown(KeyCode.F))
-        {
-            float value = -0.9859068f;
-            value = (int)(Math.Round(value, 3)*1000);
-            ChangedZValue(value);
-        }
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            float value = -0.9761029f;
-            value = (int)(Math.Round(value, 3)*1000);
-            ChangedZValue(value);
-        }
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            DEBUG_testData.wiseEvent.Post(gameObject);
-        }
+        // if(Input.GetKeyDown(KeyCode.E))
+        // {
+        //     float value = -0.9957108f;
+        //     value = (int)(Math.Round(value, 3)*1000);
+        //     ChangedZValue(value);
+        // }
+        // if(Input.GetKeyDown(KeyCode.F))
+        // {
+        //     float value = -0.9859068f;
+        //     value = (int)(Math.Round(value, 3)*1000);
+        //     ChangedZValue(value);
+        // }
+        // if(Input.GetKeyDown(KeyCode.G))
+        // {
+        //     float value = -0.9761029f;
+        //     value = (int)(Math.Round(value, 3)*1000);
+        //     ChangedZValue(value);
+        // }
+        // if(Input.GetKeyDown(KeyCode.L))
+        // {
+        //     DEBUG_testData.wiseEvent.Post(gameObject);
+        // }
     }
     private void OnEnable() 
     {
@@ -71,25 +75,21 @@ public class TriggerEvent : MonoBehaviour
 
     private void InitButtonEventDicionary()
     {
-        buttonEventDictionary = new Dictionary<Vector2, ButtonSetData>();
-        foreach (var buttonSet in buttonSets)
+        multipleButtonEventDictionary = new Dictionary<Vector2, ButtonSetData>();
+        foreach (var buttonSet in multipleEventsButtonSets)
         {
             Vector2 vector2 = Vector2.zero;
             vector2.x = (int)(Math.Round(buttonSet.ZValue, 3)*1000);
             vector2.y = (int)(Math.Round(buttonSet.RZValue, 3)*1000);
             //vector2.y = buttonSet.RZValue;
-            if(!buttonEventDictionary.ContainsKey(vector2))
+            if(!multipleButtonEventDictionary.ContainsKey(vector2))
             {
-                buttonEventDictionary.Add(vector2, buttonSet);
+                multipleButtonEventDictionary.Add(vector2, buttonSet);
             }
             else
             {
                 Debug.Log("button key" + buttonSet.eventName + "already exisit!");
             }
-        }
-        for(int i = 0; i < buttonEventDictionary.Count; i++)
-        {
-            Debug.Log(buttonEventDictionary.ElementAt(i).Key.x +", " +  buttonEventDictionary.ElementAt(i).Key.y + " Event: " + buttonEventDictionary.ElementAt(i).Value.eventName);
         }
     }
 
@@ -97,12 +97,19 @@ public class TriggerEvent : MonoBehaviour
     private void CheckEvent()
     {
         Debug.Log("CurrentValue: " + guitarValue.x + ", " + guitarValue.y);
-        if(buttonEventDictionary.TryGetValue(guitarValue, out ButtonSetData buttonSetData))
+        if(CustomInputSystem.Instance.CurrentInputType == CustomInputSystem.InputType.singleEvent)
         {
-            Debug.Log("Trigger Event: " + buttonSetData.eventName);
-            if(buttonSetData.wiseEvent != null)
+            singleEvent.Post(gameObject);
+        }
+        else if(CustomInputSystem.Instance.CurrentInputType == CustomInputSystem.InputType.multipleEvents)
+        {
+            if(multipleButtonEventDictionary.TryGetValue(guitarValue, out ButtonSetData buttonSetData))
             {
-                buttonSetData.wiseEvent.Post(gameObject);
+                Debug.Log("Trigger Event: " + buttonSetData.eventName);
+                if(buttonSetData.wiseEvent != null)
+                {
+                    buttonSetData.wiseEvent.Post(gameObject);
+                }
             }
         }
     }

@@ -15,9 +15,18 @@ public class CustomInputSystem : MonoBehaviour
     private Vector2 rZInput;
     private bool isRZPressed;
     public bool IsRZPressed => isRZPressed;    
+    [SerializeField]
+    private InputType inputType;
+    public InputType CurrentInputType => inputType;
     public delegate void OnButtonStatusChangedDelegate(float value);
     public static event OnButtonStatusChangedDelegate OnRZPressed;
     public static event OnButtonStatusChangedDelegate OnZPressed;
+    
+    public enum InputType
+    {
+        singleEvent = 0,
+        multipleEvents = 1
+    }
     private void Awake()
     {
         if (Instance != null)

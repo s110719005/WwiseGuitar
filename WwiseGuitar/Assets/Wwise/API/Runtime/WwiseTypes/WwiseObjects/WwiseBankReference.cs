@@ -16,7 +16,7 @@ Copyright (c) 2024 Audiokinetic Inc.
 *******************************************************************************/
 
 using System.IO;
-using UnityEditor;
+//using UnityEditor;
 
 #if AK_WWISE_ADDRESSABLES && UNITY_ADDRESSABLES
 using AK.Wwise.Unity.WwiseAddressables;
